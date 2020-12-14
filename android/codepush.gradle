@@ -26,10 +26,10 @@ gradle.projectsEvaluated {
     
     android.applicationVariants.all { variant ->
         def nodeModulesPath;
-        if (config.root) {
-            nodeModulesPath = Paths.get(config.root, "/node_modules");
-        } else if (project.hasProperty('nodeModulesPath')) {
+        if (project.hasProperty('nodeModulesPath')) {
             nodeModulesPath = project.nodeModulesPath
+        } else if (config.root) {
+            nodeModulesPath = Paths.get(config.root, "/node_modules");
         } else {
             nodeModulesPath = "../../node_modules";
         }
